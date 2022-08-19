@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSignUpEmailPassword } from "@nhost/nextjs";
 import Link from "next/link";
-import Image from "next/image";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,14 +11,8 @@ const SignUp = () => {
 
   const router = useRouter();
 
-  const {
-    signUpEmailPassword,
-    isLoading,
-    isSuccess,
-    needsEmailVerification,
-    isError,
-    error,
-  } = useSignUpEmailPassword();
+  const { signUpEmailPassword, isLoading, isSuccess, isError, error } =
+    useSignUpEmailPassword();
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -38,58 +31,58 @@ const SignUp = () => {
     return null;
   }
 
-  const disableForm = isLoading || needsEmailVerification;
+  const disableForm = isLoading;
 
   return (
     <div>
       <div>
-        {needsEmailVerification ? (
+        {/* {needsEmailVerification ? (
           <p>
             Please check your mailbox and follow the verification link to verify
             your email.
           </p>
-        ) : (
-          <form onSubmit={handleOnSubmit}>
-            <div>
-              <input
-                label="First name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                disabled={disableForm}
-                required
-              />
-              <input
-                label="Last name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                disabled={disableForm}
-                required
-              />
-            </div>
+        ) : ( */}
+        <form onSubmit={handleOnSubmit}>
+          <div>
             <input
-              type="email"
-              label="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              label="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               disabled={disableForm}
               required
             />
             <input
-              type="password"
-              label="Create password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              label="Last name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               disabled={disableForm}
               required
             />
+          </div>
+          <input
+            type="email"
+            label="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={disableForm}
+            required
+          />
+          <input
+            type="password"
+            label="Create password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={disableForm}
+            required
+          />
 
-            <button type="submit" disabled={disableForm}>
-              {isLoading ? <i>Loading...</i> : "Create account"}
-            </button>
+          <button type="submit" disabled={disableForm}>
+            {isLoading ? <i>Loading...</i> : "Create account"}
+          </button>
 
-            {isError ? <p>{error?.message}</p> : null}
-          </form>
-        )}
+          {isError ? <p>{error?.message}</p> : null}
+        </form>
+        {/* )} */}
       </div>
       <p>
         Already have an account?{" "}
