@@ -35,7 +35,7 @@ const SignIn = () => {
           </p>
         ) : ( */}
         <>
-          <form onSubmit={handleOnSubmit}>
+          <form>
             <input
               type="email"
               label="Email address"
@@ -52,7 +52,11 @@ const SignIn = () => {
               disabled={disableForm}
               required
             />
-            <button type="submit" disabled={disableForm}>
+            <button
+              type="button"
+              onClick={(e) => handleOnSubmit(e)}
+              disabled={disableForm}
+            >
               {isLoading ? <i>Loading...</i> : "Sign in"}
             </button>
             {isError ? <p>{error?.message}</p> : null}
