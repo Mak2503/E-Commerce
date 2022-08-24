@@ -9,12 +9,12 @@ function Home() {
   const { signOut } = useSignOut();
   return (
     <div>
-      {/* <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <div>Hello {user.displayName}</div>
         <button type="button" onClick={() => signOut()}>
           Sign out
         </button>
-      </div> */}
+      </div>
       <Navbar />
       <Landing />
     </div>
