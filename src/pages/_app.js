@@ -1,6 +1,7 @@
 import { NhostClient, NhostNextProvider } from "@nhost/nextjs";
 import { NhostApolloProvider } from "@nhost/react-apollo";
 import { UserProvider } from "UserProvider";
+import "../index.css";
 
 export const nhost = new NhostClient({
   subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN,
