@@ -34,7 +34,7 @@ const SignUp = () => {
   const disableForm = isLoading;
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <div>
         {/* {needsEmailVerification ? (
           <p>
@@ -43,40 +43,51 @@ const SignUp = () => {
           </p>
         ) : ( */}
         <form onSubmit={handleOnSubmit}>
-          <div>
+          <div className="flex flex-col">
             <input
+              className="px-3 py-2 my-2 border border-gray-300 rounded-md"
               label="First name"
               value={firstName}
+              placeholder="First Name"
               onChange={(e) => setFirstName(e.target.value)}
               disabled={disableForm}
               required
             />
             <input
+              className="px-3 py-2 my-2 border border-gray-300 rounded-md"
               label="Last name"
               value={lastName}
+              placeholder="Last Name"
               onChange={(e) => setLastName(e.target.value)}
               disabled={disableForm}
               required
             />
+            <input
+              className="px-3 py-2 my-2 border border-gray-300 rounded-md"
+              type="email"
+              label="Email address"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={disableForm}
+              required
+            />
+            <input
+              className="px-3 py-2 my-2 border border-gray-300 rounded-md"
+              type="password"
+              label="Create password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={disableForm}
+              required
+            />
           </div>
-          <input
-            type="email"
-            label="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+          <button
+            type="submit"
+            className="px-3 py-2 text-sm bg-blue-500 text-white"
             disabled={disableForm}
-            required
-          />
-          <input
-            type="password"
-            label="Create password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={disableForm}
-            required
-          />
-
-          <button type="submit" disabled={disableForm}>
+          >
             {isLoading ? <i>Loading...</i> : "Create account"}
           </button>
 
@@ -86,8 +97,8 @@ const SignUp = () => {
       </div>
       <p>
         Already have an account?{" "}
-        <Link href="/sign-in">
-          <a>Sign in</a>
+        <Link href="/signin">
+          <a className="text-blue-500 underline">Sign in</a>
         </Link>
       </p>
     </div>

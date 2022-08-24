@@ -26,7 +26,7 @@ const SignIn = () => {
   const disableForm = isLoading;
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <div>
         {/* {needsEmailVerification ? (
           <p className={styles["verification-text"]}>
@@ -36,24 +36,31 @@ const SignIn = () => {
         ) : ( */}
         <>
           <form>
-            <input
-              type="email"
-              label="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={disableForm}
-              required
-            />
-            <input
-              type="password"
-              label="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={disableForm}
-              required
-            />
+            <div className="flex flex-col">
+              <input
+                className="px-3 py-2 my-2 border border-gray-300 rounded-md"
+                type="email"
+                label="Email address"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={disableForm}
+                required
+              />
+              <input
+                className="px-3 py-2 my-2 border border-gray-300 rounded-md"
+                type="password"
+                label="Password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={disableForm}
+                required
+              />
+            </div>
             <button
               type="button"
+              className="px-3 py-2 text-sm bg-blue-500 text-white"
               onClick={(e) => handleOnSubmit(e)}
               disabled={disableForm}
             >
@@ -67,7 +74,7 @@ const SignIn = () => {
       <p>
         No account yet?{" "}
         <Link href="/signup">
-          <a>Sign up</a>
+          <a className="text-blue-500 underline">Sign up</a>
         </Link>
       </p>
     </div>
